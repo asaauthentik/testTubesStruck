@@ -322,6 +322,7 @@ public static void allData(){
         kereta1.booleanStatusReguler[0] = true;
         kereta1.personalDataReguler[0] = datadiri1;
         //menu pada program
+        //djsd
         allData();
     }
     //hilbert? :v
