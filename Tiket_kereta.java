@@ -244,7 +244,7 @@ public class Tiket_kereta{
                 for(int j=0; j<ArrKereta.size(); j++){
                     if(person[j].ktp == KTP){
                         JOptionPane.showMessageDialog(null, 
-                        "Nomor tiket    :" +  person[j].kodeTiket +"\n" +
+                        "Nomor tiket    :" + person[j].kodeTiket +"\n" +
                         "Nama           :" + person[j].nama + "\n" + 
                         "Asal kota      :" + Kereta.asalKota + "\n" +  
                         "Kota Tujuan    :" + Kereta.tujuanKota + "\n" + 
@@ -261,7 +261,7 @@ public class Tiket_kereta{
                 for(int j=0; j<ArrKereta.size(); j++){
                     if(person[j].ktp == KTP){
                         JOptionPane.showMessageDialog(null, 
-                        "Nomor tiket    :" +  person[j].kodeTiket +"\n" +
+                        "Nomor tiket    :" + person[j].kodeTiket +"\n" +
                         "Nama           :" + person[j].nama + "\n" + 
                         "Asal kota      :" + Kereta.asalKota + "\n" +  
                         "Kota Tujuan    :" + Kereta.tujuanKota + "\n" + 
