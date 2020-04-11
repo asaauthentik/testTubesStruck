@@ -191,13 +191,13 @@ public class Tiket_kereta{
                     for(int j=0; j<person.length; j++){
                         if(person[i].nama.equals(Name) && person[i].ktp == KTP){
                             //edit data jika ditemukan
-                            JOptionPane.showInputDialog(null,"Nama: " + person[i].nama);
-                            JOptionPane.showInputDialog(null,"Jenis Kelamin: " + person[i].JK);
-                            Integer.parseInt(showInputDialog(null, "Umur: ", person[i].umur));
-                            Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP", person[i].ktp));
-                            JOptionPane.showInputDialog(null,"Email: " + person[i].email);
-                            Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP: ", person[i].hp));
-                            return;
+                            person[i].nama = JOptionPane.showInputDialog(null,"Nama: ");
+                            person[i].JK = JOptionPane.showInputDialog(null,"Jenis Kelamin: ");
+                            //person[i].umur = Integer.parseInt(showInputDialog(null, "Umur: "));
+                            person[i].ktp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP"));
+                            person[i].email = JOptionPane.showInputDialog(null,"Email: ");
+                            person[i].hp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP: "));
+                            break;
                         }
                         
                     }
@@ -206,29 +206,28 @@ public class Tiket_kereta{
                     for(int j=0; j<person.length; j++){
                         if(person[i].nama.equals(Name) && person[i].ktp == KTP){
                             //edit data jika ditemukan
-                            JOptionPane.showInputDialog(null,"Nama: " + person[i].nama);
-                            JOptionPane.showInputDialog(null,"Jenis Kelamin: " + person[i].JK);
-                            Integer.parseInt(showInputDialog(null, "Umur: ", person[i].umur));
-                            Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP", person[i].ktp));
-                            JOptionPane.showInputDialog(null,"Email: " + person[i].email);
-                            Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP: ", person[i].hp));
-                            return;
+                            person[i].nama = JOptionPane.showInputDialog(null,"Nama: ");
+                            person[i].JK = JOptionPane.showInputDialog(null,"Jenis Kelamin: ");
+                            //person[i].umur = Integer.parseInt(showInputDialog(null, "Umur: "));
+                            person[i].ktp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP"));
+                            person[i].email = JOptionPane.showInputDialog(null,"Email: ");
+                            person[i].hp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP: "));
+                            break;
                         }
-                        
                     }
-                    
                 }
             }
             JOptionPane.showMessageDialog(null, "Data tidak ditemukan!", "Alert", JOptionPane.WARNING_MESSAGE);
         }
     }
     
+    /*
     public static boolean pembatalanTiket(kereta dataPenumpang) {
-        return true;
+        
     }
 
     static void printTiket(){
-        /*
+
         String nomorTiket = JOptionPane.showInputDialog(null, "Masukkan kode tiket: ");
         boolean cekCode = false;
         for(int i=0; i<ArrKereta.size(); i++){
@@ -259,9 +258,9 @@ public class Tiket_kereta{
             }
         }
         JOptionPane.showMessageDialog(null, "Data tidak ditemukan!", "Alert", JOptionPane.WARNING_MESSAGE);
-        */
+       
     }
-
+     */
 public static void allData(){
     OUTER:
     while (true) {
@@ -274,6 +273,25 @@ public static void allData(){
                 "4, Print Tiket Kereta\n"
             )
         );
+        if(Menu == 1){
+            dataDiri newDataDD = inputDataPenumpang();
+            Arrperson.add(newDataDD);
+            for(int i=0; i<Arrperson.size(); i++){
+                registerPenumpang(Arrperson.get(i));
+            }
+        }else if(Menu == 2){
+            for(int i=0; i<ArrKereta.size(); i++){
+                editTiket(ArrKereta.get(i));
+            }
+        }else if(Menu == 3){
+
+        }else if(Menu == 4){
+            //printTiket();
+        }else{
+            JOptionPane.showMessageDialog(null, "Input Salah!", "Alert", JOptionPane.WARNING_MESSAGE);
+            break OUTER;
+        }
+        /*
         switch (Menu) {
             case 1:
                 dataDiri newDataDD = inputDataPenumpang();
@@ -297,6 +315,7 @@ public static void allData(){
                 JOptionPane.showMessageDialog(null, "Input Salah!", "Alert", JOptionPane.WARNING_MESSAGE);
                 break OUTER;
         }
+        */
     }
 }
     public static void main(String[] args) {
@@ -322,12 +341,10 @@ public static void allData(){
         kereta1.booleanStatusReguler[0] = true;
         kereta1.personalDataReguler[0] = datadiri1;
         //menu pada program
-        //djsd
         allData();
     }
-    //INi dari gw el
-    //test
-    //Dari el
     //hilbert? :v
+    //test
+    // yup
 }
 
