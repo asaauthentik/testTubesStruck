@@ -204,14 +204,14 @@ public class Tiket_kereta{
                 }else if(kelasKereta.equals("Reguler")){
                     dataDiri[] person = tempKereta.personalDataReguler;
                     for(int j=0; j<person.length; j++){
-                        if(person[i].nama.equals(Name) && person[i].ktp == KTP){
+                        if(person[j].nama.equals(Name) && person[j].ktp == KTP){
                             //edit data jika ditemukan
-                            person[i].nama = JOptionPane.showInputDialog(null,"Nama: ");
-                            person[i].JK = JOptionPane.showInputDialog(null,"Jenis Kelamin: ");
+                            person[j].nama = JOptionPane.showInputDialog(null,"Nama: ");
+                            person[j].JK = JOptionPane.showInputDialog(null,"Jenis Kelamin: ");
                             //person[i].umur = Integer.parseInt(showInputDialog(null, "Umur: "));
-                            person[i].ktp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP"));
-                            person[i].email = JOptionPane.showInputDialog(null,"Email: ");
-                            person[i].hp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP: "));
+                            person[j].ktp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP"));
+                            person[j].email = JOptionPane.showInputDialog(null,"Email: ");
+                            person[j].hp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP: "));
                             break;
                         }
                     }
@@ -343,8 +343,5 @@ public static void allData(){
         //menu pada program
         allData();
     }
-    //hilbert? :v
-    //test
-    // yup
 }
 
