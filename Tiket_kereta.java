@@ -267,14 +267,10 @@ public static void allData(){
             case 1:
                 dataDiri newDataDD = inputDataPenumpang();
                 Arrperson.add(newDataDD);
-                for(int i=0; i<Arrperson.size(); i++){
-                    registerPenumpang(Arrperson.get(i));
-                }
+                registerPenumpang(Arrperson.get(Arrperson.size()-1));
                 break;
             case 2:
-                for(int i=0; i<ArrKereta.size(); i++){
-                    editTiket(ArrKereta.get(i));
-                }
+                editTiket();
                 break;
             case 3:
                 
@@ -286,7 +282,6 @@ public static void allData(){
                 JOptionPane.showMessageDialog(null, "Input Salah!", "Alert", JOptionPane.WARNING_MESSAGE);
                 break OUTER;
         }
-        
     }
 }
     public static void main(String[] args) {
