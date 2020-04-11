@@ -204,6 +204,7 @@ public class Tiket_kereta{
                 }else if(kelasKereta.equals("Reguler")){
                     dataDiri[] person = tempKereta.personalDataReguler;
                     for(int j=0; j<person.length; j++){
+                        
                         if(person[i].nama.equals(Name) && person[i].ktp == KTP){
                             //edit data jika ditemukan
                             person[i].nama = JOptionPane.showInputDialog(null,"Nama: ");
@@ -343,8 +344,6 @@ public static void allData(){
         //menu pada program
         allData();
     }
-    //hilbert? :v
-    //test
-    // yup
+    
 }
 
