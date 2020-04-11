@@ -325,6 +325,7 @@ public static void allData(){
         //djsd
         allData();
     }
+    //Dari el
     //hilbert? :v
 }
 
