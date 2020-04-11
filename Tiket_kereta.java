@@ -233,17 +233,6 @@ public class Tiket_kereta{
     }
     */
     static void printTiket(){
-        /*
-        String nomorTiket = JOptionPane.showInputDialog(null, "Masukkan kode tiket: ");
-        boolean cekCode = false;
-        for(int i=0; i<ArrKereta.size(); i++){
-            kereta tempKode = ArrKereta.get(i);
-            if (tempKode.kodeTiket.equals(nomorTiket)){
-                cekCode = true;
-                break;
-            }
-        }
-        */
         for(int i=0; i<ArrKereta.size(); i++){
             kereta Kereta = ArrKereta.get(i);
             dataDiri person = Arrperson.get(i);
@@ -274,21 +263,6 @@ public static void allData(){
                 "4, Print Tiket Kereta\n"
             )
         );
-        if(Menu == 1){
-            dataDiri newDataDD = inputDataPenumpang();
-            Arrperson.add(newDataDD);
-            registerPenumpang(Arrperson.get(Arrperson.size()-1));
-        }else if(Menu == 2){
-            editTiket();
-        }else if(Menu == 3){
-
-        }else if(Menu == 4){
-            printTiket();
-        }else{
-            JOptionPane.showMessageDialog(null, "Input Salah!", "Alert", JOptionPane.WARNING_MESSAGE);
-            break OUTER;
-        }
-        /*
         switch (Menu) {
             case 1:
                 dataDiri newDataDD = inputDataPenumpang();
@@ -312,7 +286,7 @@ public static void allData(){
                 JOptionPane.showMessageDialog(null, "Input Salah!", "Alert", JOptionPane.WARNING_MESSAGE);
                 break OUTER;
         }
-        */
+        
     }
 }
     public static void main(String[] args) {
