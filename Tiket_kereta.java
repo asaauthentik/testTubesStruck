@@ -335,8 +335,7 @@ public static void allData(){
         waktu waktu_kereta5 = new waktu(20, "Juli", 2020, 10);
         kereta kereta5 = new kereta("Ranggajati", "Jember", "Cirebon", 5, 5, waktu_kereta5, 175000);
         ArrKereta.add(kereta5);
-        //Dummt data person
-        //datadiri(String nama, String JK, int umur, int ktp, String email,int hp, String pembayaran, int poin)
+        //Dummy data person
         dataDiri datadiri1 = new dataDiri("Elangel", "P", 18, 17, "elangel@mail.com" , 1 , "", 0);
         kereta1.booleanStatusReguler[0] = true;
         kereta1.personalDataReguler[0] = datadiri1;
