@@ -47,7 +47,7 @@ class dataDiri{
     String kodeTiket;
     viaBayar payment;
     dataDiri(){}
-    dataDiri(String nama, String JK, int umur, int ktp, String email,int hp, String pembayaran, int poin){
+    dataDiri(String nama, String JK, int umur, int ktp, String email,int hp, String pembayaran, int poin, String kodeTiket){
         this.nama = nama;
         this.JK = JK;
         this.umur = umur;
@@ -55,6 +55,7 @@ class dataDiri{
         this.hp = hp;
         this.pembayaran = pembayaran;
         this.poin = poin;
+        this.kodeTiket = kodeTiket;
     }
 }
 
@@ -233,22 +234,50 @@ public class Tiket_kereta{
     }
     */
     static void printTiket(){
-        for(int i=0; i<ArrKereta.size(); i++){
+        String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta: ");
+        int KTP =Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Nomor KTP: "));
+        boolean stat = true;
+        for(int i=0; i<ArrKereta.size() && stat == true; i++){
             kereta Kereta = ArrKereta.get(i);
-            dataDiri person = Arrperson.get(i);
-            JOptionPane.showMessageDialog(null, 
-                "Nomor tiket " +  person.kodeTiket +"\n" +
-                "Nama: " + person.nama + "\n" + 
-                "Asal kota: " + Kereta.asalKota + "\n" +  
-                "Kota Tujuan: " + Kereta.tujuanKota + "\n" + 
-                "Tanggal: " + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
-                "Pukul: " + Kereta.dataWaktu.jam + "\n" +
-                "Nama Kereta: " + Kereta.namaKereta + "\n" +
-                //kelas kereta
-                //via bayar
-                "Poin: " + person.poin
-            );
-        }       
+            if(kelasKereta.equals("Eksekutif")){
+                dataDiri[] person = Kereta.personalDataEksekutif;
+                for(int j=0; j<ArrKereta.size(); j++){
+                    if(person[j].ktp == KTP){
+                        JOptionPane.showMessageDialog(null, 
+                        "Nomor tiket    :" +  person[j].kodeTiket +"\n" +
+                        "Nama           :" + person[j].nama + "\n" + 
+                        "Asal kota      :" + Kereta.asalKota + "\n" +  
+                        "Kota Tujuan    :" + Kereta.tujuanKota + "\n" + 
+                        "Tanggal        :" + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
+                        "Pukul          :" + Kereta.dataWaktu.jam + "\n" +
+                        "Nama Kereta    :" + Kereta.namaKereta + "\n" +
+                        "Kelas Kereta   :" + kelasKereta + "\n" +
+                        "Poin           :" + person[j].poin
+                        );
+                    }
+                }     
+            }else{
+                dataDiri[] person = Kereta.personalDataReguler;
+                for(int j=0; j<ArrKereta.size(); j++){
+                    if(person[j].ktp == KTP){
+                        JOptionPane.showMessageDialog(null, 
+                        "Nomor tiket    :" +  person[j].kodeTiket +"\n" +
+                        "Nama           :" + person[j].nama + "\n" + 
+                        "Asal kota      :" + Kereta.asalKota + "\n" +  
+                        "Kota Tujuan    :" + Kereta.tujuanKota + "\n" + 
+                        "Tanggal        :" + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
+                        "Pukul          :" + Kereta.dataWaktu.jam + "\n" +
+                        "Nama Kereta    :" + Kereta.namaKereta + "\n" +
+                        "Kelas Kereta   :" + kelasKereta + "\n" +
+                        "Poin           :" + person[j].poin
+                        );
+                    }
+                }
+            }
+        }   
+        /*
+          
+        */
     }
     
 public static void allData(){
@@ -302,7 +331,7 @@ public static void allData(){
         kereta kereta5 = new kereta("Ranggajati", "Jember", "Cirebon", 5, 5, waktu_kereta5, 175000);
         ArrKereta.add(kereta5);
         //Dummy data person
-        dataDiri datadiri1 = new dataDiri("Elangel", "P", 18, 17, "elangel@mail.com" , 1 , "", 0);
+        dataDiri datadiri1 = new dataDiri("Elangel", "P", 18, 17, "elangel@mail.com" , 1 , "", 0, "AA11BC");
         kereta1.booleanStatusReguler[0] = true;
         kereta1.personalDataReguler[0] = datadiri1;
         //menu pada program
