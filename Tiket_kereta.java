@@ -227,14 +227,13 @@ public class Tiket_kereta{
             }
         }
     }
-    
     /*
     public static boolean pembatalanTiket(kereta dataPenumpang) {
         
     }
-
+    */
     static void printTiket(){
-
+        /*
         String nomorTiket = JOptionPane.showInputDialog(null, "Masukkan kode tiket: ");
         boolean cekCode = false;
         for(int i=0; i<ArrKereta.size(); i++){
@@ -244,30 +243,25 @@ public class Tiket_kereta{
                 break;
             }
         }
-        if(cekCode == true){
-            for(int i=0; i<ArrKereta.size(); i++){
-                for(int j=0; j<ArrKereta.get(i).personalDataEksekutif; j++){
-                    kereta[] Kereta = ArrKereta.get(i);
-                    
-                    JOptionPane.showMessageDialog(null, 
-                        "Nomor tiket " +  Kereta[i].kodeTiket +"\n" +
-                        "Nama: " + orang[j].nama + "\n" + 
-                        "Asal kota: " + Kereta[i].asalKota + "\n" +  
-                        "Kota Tujuan: " + Kereta[i].tujuanKota + "\n" + 
-                        "Tanggal: " + Kereta[i].dataWaktu.tanggal + " " + Kereta[i].dataWaktu.bulan + " " + Kereta[i].dataWaktu.tahun + " " + "\n" +
-                        "Pukul: " + Kereta[i].dataWaktu.jam + "\n" +
-                        "Nama Kereta: " + Kereta[i].namaKereta + "\n" +
-                        //kelas kereta
-                        //via bayar
-                        "Poin: " + orang[j].poin
-                    );
-                }
-            }
-        }
-        JOptionPane.showMessageDialog(null, "Data tidak ditemukan!", "Alert", JOptionPane.WARNING_MESSAGE);
-       
+        */
+        for(int i=0; i<ArrKereta.size(); i++){
+            kereta Kereta = ArrKereta.get(i);
+            dataDiri person = Arrperson.get(i);
+            JOptionPane.showMessageDialog(null, 
+                "Nomor tiket " +  person.kodeTiket +"\n" +
+                "Nama: " + person.nama + "\n" + 
+                "Asal kota: " + Kereta.asalKota + "\n" +  
+                "Kota Tujuan: " + Kereta.tujuanKota + "\n" + 
+                "Tanggal: " + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
+                "Pukul: " + Kereta.dataWaktu.jam + "\n" +
+                "Nama Kereta: " + Kereta.namaKereta + "\n" +
+                //kelas kereta
+                //via bayar
+                "Poin: " + person.poin
+            );
+        }       
     }
-     */
+    
 public static void allData(){
     OUTER:
     while (true) {
@@ -289,7 +283,7 @@ public static void allData(){
         }else if(Menu == 3){
 
         }else if(Menu == 4){
-            //printTiket();
+            printTiket();
         }else{
             JOptionPane.showMessageDialog(null, "Input Salah!", "Alert", JOptionPane.WARNING_MESSAGE);
             break OUTER;
