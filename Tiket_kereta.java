@@ -325,6 +325,7 @@ public static void allData(){
         //djsd
         allData();
     }
+    //INi dari gw el
     //test
     //Dari el
     //hilbert? :v
