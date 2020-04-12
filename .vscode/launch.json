@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Tiket_kereta",
+            "request": "launch",
+            "mainClass": "Tiket_kereta",
+            "projectName": "testTubesStruck_15472ef8"
+        }
+    ]
+}

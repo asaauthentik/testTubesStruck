@@ -90,7 +90,7 @@ class viaBayar{
 public class Tiket_kereta{
     static ArrayList<kereta> ArrKereta =  new ArrayList<kereta>();
     static ArrayList<dataDiri> Arrperson = new ArrayList<dataDiri>();
-//bukan, bata
+
     public static dataDiri inputDataPenumpang(){
         dataDiri data = new dataDiri();
         data.nama = JOptionPane.showInputDialog(null, "Masukkan Nama : ");
@@ -124,7 +124,6 @@ public class Tiket_kereta{
             tanggal.substring(0) + 
             pilihanKereta.substring(0,1) + 
             jam.substring(0);
-        JOptionPane.showMessageDialog(null, "Kode Tiket : " + codeBook);
         
         //Search jadwal kereta
         for(int i=0; i<ArrKereta.size() ; i++){
@@ -132,63 +131,49 @@ public class Tiket_kereta{
             if(tempKereta.namaKereta.equals(namaKereta) && tempKereta.tujuanKota.equals(tujuan) && tempKereta.asalKota.equals(asal) &&
                tempKereta.dataWaktu.tanggal == tanggalKeberangkatan && tempKereta.dataWaktu.bulan.equals(bulanKeberangkatan) && 
                tempKereta.dataWaktu.tahun == tahunKeberangkatan && tempKereta.dataWaktu.jam == jamKeberangkatan){
+                boolean[] status;
+                dataDiri[] personalData;
+                int jml = 0;   
                 //Harga tiket per kelas
                 if(pilihanKereta.equals("Eksekutif")){
-                    for(int j=0; j<tempKereta.booleanStatusEksekutif.length; j++){
-                        if(tempKereta.booleanStatusEksekutif[j] == false){//false = tersedia
-                            int biaya = tempKereta.biayaTiket;
-                            int poin = (tempKereta.biayaTiket*3)/100;
-                            String pilihan = JOptionPane.showInputDialog(null, "Apakah ingin menggunakan poin? (Yes/No) : ");
-                            if(pilihan.equals("Yes")){
-                                biaya = biaya - dataPenumpang.poin;
-                                if(biaya <= 0){
-                                    dataPenumpang.poin = dataPenumpang.poin - biaya;
-                                    tempKereta.booleanStatusEksekutif[j] = false;
-                                    tempKereta.personalDataEksekutif[j] = dataPenumpang;                                        
-                                    break;
-                                }else{
-                                    JOptionPane.showMessageDialog(null, "Poin tidak mencukupi!",  "Alert", JOptionPane.WARNING_MESSAGE);
-                                }
+                    status = tempKereta.booleanStatusEksekutif;
+                    personalData = tempKereta.personalDataEksekutif;
+                    jml = tempKereta.jumlahEksekutif;
+                }else{
+                    status = tempKereta.booleanStatusReguler;
+                    personalData = tempKereta.personalDataReguler;
+                    jml = tempKereta.jumlahReguler;
+                }
+                   
+                //Cari Kursi
+                for(int j=0; j<jml ; j++){
+                    if(status[j] == false){//false = kursi tersedia
+                        int biaya = tempKereta.biayaTiket;
+                        int poin = (biaya*3)/100;
+                        String pilihan = JOptionPane.showInputDialog(null, "Tiket kereta ditemukan dengan biaya :  " + biaya + "\nApakah ingin menggunakan poin? (Yes/No) : ");
+                        if(pilihan.equals("Yes")){
+                            if(biaya - dataPenumpang.poin <= 0){ // kalau biayanya masih sisa jadi tidak cukup
+                                dataPenumpang.poin = dataPenumpang.poin - biaya;
+                                JOptionPane.showMessageDialog(null, "Kode Tiket : " + codeBook);
+                                status[j] = true;
+                                personalData[j] = dataPenumpang;
+                                return;                                        
+                            }else{
+                                JOptionPane.showMessageDialog(null, "Poin tidak mencukupi!",  "Alert", JOptionPane.WARNING_MESSAGE);
                             }
-                            JOptionPane.showMessageDialog(null, "Tiket kereta ditemukan dengan biaya :  " + biaya);
-                            dataPenumpang.poin = dataPenumpang.poin + poin;
-                            tempKereta.booleanStatusEksekutif[j] = true;
-                            tempKereta.personalDataEksekutif[j] = dataPenumpang; 
-                            dataPenumpang.kodeTiket = codeBook; 
-                            break; 
                         }
+                        dataPenumpang.poin += poin;
+                        dataPenumpang.kodeTiket = codeBook;
+                        personalData[j] = dataPenumpang; 
+                        status[j] = true;
+                        System.out.println("PersonalData = " + personalData[j].nama + "poin :" + personalData[j].poin + " " + personalData[j].ktp);
+                        JOptionPane.showMessageDialog(null, "Kode Tiket : " + codeBook);
+                        return;
                     }
-                    break;
-                }else if(pilihanKereta.equals("Reguler")){
-                    for(int j=0; j<tempKereta.booleanStatusReguler.length; j++){
-                        if(tempKereta.booleanStatusReguler[j] == false){
-                            int biaya = tempKereta.biayaTiket;
-                            int poin = (tempKereta.biayaTiket*3)/100;
-                            String pilihan = JOptionPane.showInputDialog(null, "Apakah ingin menggunakan poin? (Yes/No) : ");
-                            if(pilihan.equals("Yes")){
-                                biaya = biaya - dataPenumpang.poin;
-                                if(biaya <= 0){
-                                    dataPenumpang.poin = dataPenumpang.poin - biaya;
-                                    tempKereta.booleanStatusReguler[j] = false;
-                                    tempKereta.personalDataReguler[j] = dataPenumpang;                                        
-                                    break;
-                                }else{
-                                    JOptionPane.showMessageDialog(null, "Poin tidak mencukupi!",  "Alert", JOptionPane.WARNING_MESSAGE);
-                                }
-                            }
-                            JOptionPane.showMessageDialog(null, "Tiket kereta ditemukan dengan biaya : " + biaya);
-                            dataPenumpang.poin = dataPenumpang.poin + poin;
-                            tempKereta.booleanStatusReguler[j] = true;
-                            tempKereta.personalDataReguler[j] = dataPenumpang;  
-                            dataPenumpang.kodeTiket = codeBook;
-                            break;
-                        }
-                    }
-                    break;
                 }
            }
-           JOptionPane.showMessageDialog(null, "Data tidak ditemukan!", "Alert", JOptionPane.WARNING_MESSAGE);
         }
+        JOptionPane.showMessageDialog(null, "Data tidak ditemukan!", "Alert", JOptionPane.WARNING_MESSAGE);
     }
     
     public static void editTiket(){
@@ -242,51 +227,32 @@ public class Tiket_kereta{
         }
     }
 
-    static void batalTiket(){
+    static void pembatalanTiket(){
+        String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
+        String Kode = JOptionPane.showInputDialog(null, "Masukkan kode booking : ");
+        boolean stat = true;
+        for(int i=0; i<ArrKereta.size() && stat == true; i++){
+            kereta Kereta = ArrKereta.get(i);
+            if(kelasKereta.equals("Eksekutif")){
+                dataDiri[] person = Kereta.personalDataEksekutif;
+                for(int j=0; j<Kereta.booleanStatusEksekutif.length; j++){
+                    if(person[j].kodeTiket.equals(Kode) && Kereta.booleanStatusEksekutif[j] == true){
+                        Kereta.booleanStatusEksekutif[j] = false;
+                        break;
+                    }
+                }     
+            }else{
+                dataDiri[] person = Kereta.personalDataReguler;
+                for(int j=0; j<Kereta.booleanStatusReguler.length; j++){
+                    if(person[j].kodeTiket == null){
 
-        String code = JOptionPane.showInputDialog(null, "Masukkan kode booking : ");
-        String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas : ");
-
-        dataDiri person = null;
-        int pos = -1;
-        boolean found = false;    
-        for(int i=0; i<Arrperson.size(); i++){
-            dataDiri data =  Arrperson.get(i);
-            if(data.kodeTiket.equals(code)){
-                person = data;
-                pos = i;
-                found = true;
-                break;
-            }
-        }
-        if(found){
-            for(int i=0; i<ArrKereta.size(); i++){
-                kereta Kereta = ArrKereta.get(i);
-                dataDiri[] personal;
-                boolean cek = false;
-                if(kelasKereta.equals("Eksekutif")){
-                    personal = Kereta.personalDataEksekutif;
-                    cek = true;
-                }else{
-                   personal = Kereta.personalDataReguler;
-                }
-                
-                for(int j=0; j<personal.length; j++){
-                    if(personal[j].equals(person)){
-                        personal[j] = null;
-                        if(cek){
-                            Kereta.booleanStatusEksekutif[j] = false;
-                        }else{
-                            Kereta.booleanStatusReguler[j] = false;
-                        }
+                    }else if(person[j].kodeTiket.equals(Kode) && Kereta.booleanStatusReguler[j] == true){
+                        Kereta.booleanStatusReguler[j] = false;
                         break;
                     }
                 }
             }
-            Arrperson.remove(pos);
         }
-        
-
     }
     static void printTiket(){
         String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
@@ -309,6 +275,7 @@ public class Tiket_kereta{
                         "Kelas Kereta\t: " + kelasKereta + "\n" +
                         "Poin\t\t\t: " + person[j].poin
                         );
+                        return;
                     }
                 }     
             }else{
@@ -326,11 +293,14 @@ public class Tiket_kereta{
                         "Kelas Kereta\t: " + kelasKereta + "\n" +
                         "Poin\t\t\t: " + person[j].poin
                         );
+                        return;
                     }
                 }
             }
         }
-    }
+    JOptionPane.showMessageDialog(null, "Data tidak ditemukan!", "Alert", JOptionPane.WARNING_MESSAGE);
+}
+    
 
 public static void allData(){
     OUTER:
@@ -346,15 +316,26 @@ public static void allData(){
         );
         switch (Menu) {
             case 1:
-                dataDiri newDataDD = inputDataPenumpang();
-                Arrperson.add(newDataDD);
-                registerPenumpang(Arrperson.get(Arrperson.size()-1));
+                String choose = JOptionPane.showInputDialog(null, "Apakah Member?(Yes/No): ");
+                if(choose.equals("No")){
+                    dataDiri newDataDD = inputDataPenumpang();
+                    Arrperson.add(newDataDD);
+                    registerPenumpang(Arrperson.get(Arrperson.size()-1));    
+                }else{
+                    String email = JOptionPane.showInputDialog(null, "Email: ");
+                    for(int i=0; i<Arrperson.size(); i++){
+                        if(Arrperson.get(i).email.equals(email)){
+                            registerPenumpang(Arrperson.get(i));
+                            break;
+                        }
+                    }
+                }
                 break;
             case 2:
                 editTiket();
                 break;
             case 3:
-                batalTiket();
+                pembatalanTiket();
                 break;
             case 4:
                 printTiket();
@@ -371,10 +352,10 @@ public static void allData(){
         kereta kereta1 = new kereta("Harina", "Surabaya", "Bandung", 5, 5, waktu_kereta1, 150000);
         ArrKereta.add(kereta1);
         waktu waktu_kereta2 = new waktu(6, "April", 2020, 9);
-        kereta kereta2 = new kereta("Taksaka", "Yoyakarta", "Gambir", 5, 5, waktu_kereta2, 135000);
+        kereta kereta2 = new kereta("Taksaka", "Yogyakarta", "Gambir", 5, 1, waktu_kereta2, 135000);
         ArrKereta.add(kereta2);
         waktu waktu_kereta3 = new waktu(9, "Juni", 2020, 8);
-        kereta kereta3 = new kereta("Ciremai", "Bandung", "Semarang", 5, 5, waktu_kereta3, 150000);
+        kereta kereta3 = new kereta("Ciremai", "Bandung", "Semarang", 5, 5, waktu_kereta3, 1000);
         ArrKereta.add(kereta3);
         waktu waktu_kereta4 = new waktu(13, "Mei", 2020, 15);
         kereta kereta4 = new kereta("Sancaka", "Yoyakarta", "Surabaya", 5, 5, waktu_kereta4, 120000);
