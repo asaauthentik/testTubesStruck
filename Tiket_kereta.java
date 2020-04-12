@@ -160,12 +160,13 @@ public class Tiket_kereta{
                             }
                         }
                         //--- via bayar
-                        via_bayar(dataPenumpang);
+                        //via_bayar(dataPenumpang);
                         dataPenumpang.poin += poin;
                         dataPenumpang.kodeTiket = codeBook;
                         personalData[j] = dataPenumpang; 
                         status[j] = true;
                         JOptionPane.showMessageDialog(null, "Kode Tiket : " + codeBook);
+                        return;
                     }
                 }
            }
