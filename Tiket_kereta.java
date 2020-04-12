@@ -285,7 +285,7 @@ public class Tiket_kereta{
             }
             Arrperson.remove(pos);
         }
-        String codeBook = JOptionPane.showInputDialog(null, "Masukkan kode booking : ");
+        
 
     }
     static void printTiket(){
