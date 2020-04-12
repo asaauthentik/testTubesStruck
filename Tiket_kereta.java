@@ -72,18 +72,15 @@ class waktu{
 }
 
 class viaBayar{
-    int atm;//nanti dibagi lagi jd bri,bca, dll
-    int mobilebanking;// mobile transfer bca,mandiri dll
+    int atm;//nanti rekening
+    int mobilebanking;//nomor va
     int minimarket;// alfa indomart
-    int visa;//kredit,tagihan akhir bulan,masukin nomor kartu
-    int kantorpos;//dikasih kode,bayar di kantor pos terdekat
-    //nnti aja hapusnya,biar ada bayangan ok
-    public viaBayar(int atm, int mobilebanking, int minimarket, int visa, int kantorpos){
+    int visa;//nomor kartu kredit
+    public viaBayar(int atm, int mobilebanking, int minimarket, int visa){
         this.atm = atm;
         this.mobilebanking = mobilebanking;
         this.minimarket = minimarket;
         this.visa = visa;
-        this.kantorpos = kantorpos; 
     }
 }
 
@@ -162,20 +159,41 @@ public class Tiket_kereta{
                                 JOptionPane.showMessageDialog(null, "Poin tidak mencukupi!",  "Alert", JOptionPane.WARNING_MESSAGE);
                             }
                         }
+                        //--- via bayar
+                        via_bayar(dataPenumpang);
                         dataPenumpang.poin += poin;
                         dataPenumpang.kodeTiket = codeBook;
                         personalData[j] = dataPenumpang; 
                         status[j] = true;
-                        System.out.println("PersonalData = " + personalData[j].nama + "poin :" + personalData[j].poin + " " + personalData[j].ktp);
                         JOptionPane.showMessageDialog(null, "Kode Tiket : " + codeBook);
-                        return;
                     }
                 }
            }
         }
         JOptionPane.showMessageDialog(null, "Data tidak ditemukan!", "Alert", JOptionPane.WARNING_MESSAGE);
     }
-    
+
+    public static void via_bayar(dataDiri dataPenumpang) {
+        int pilih = Integer.parseInt(
+            JOptionPane.showInputDialog(null, 
+                "Masukkan metode pembayaran:\n" + 
+                "1. ATM\n" + 
+                "2. Minimarket\n" +
+                "3. Mobile banking\n" +
+                "4. Visa\n")
+            );
+        if(pilih == 1){
+            dataPenumpang.payment.atm = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukan nomor kartu atm: "));
+        }else if(pilih == 2){
+            dataPenumpang.payment.minimarket = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu keanggotaan minimarket: "));
+        }else if(pilih == 3){
+            dataPenumpang.payment.mobilebanking = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor virtual account: "));
+        }else if(pilih == 4){
+            dataPenumpang.payment.visa = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu kredit: "));
+        }
+        JOptionPane.showMessageDialog(null, "Via pembayaran " + dataPenumpang.payment + " berhasil!");
+    }
+
     public static void editTiket(){
         String pilihan = JOptionPane.showInputDialog(null, "Apakah ingin mengedit data? (Yes/No) : ");
         if(pilihan.equals("Yes")){
@@ -229,7 +247,7 @@ public class Tiket_kereta{
 
     static void pembatalanTiket(){
         String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
-        String Kode = JOptionPane.showInputDialog(null, "Masukkan kode booking : ");
+        String Kode = JOptionPane.showInputDialog(null, "Masukkan kode tiket : ");
         boolean stat = true;
         for(int i=0; i<ArrKereta.size() && stat == true; i++){
             kereta Kereta = ArrKereta.get(i);
@@ -244,26 +262,25 @@ public class Tiket_kereta{
             }else{
                 dataDiri[] person = Kereta.personalDataReguler;
                 for(int j=0; j<Kereta.booleanStatusReguler.length; j++){
-                    if(person[j].kodeTiket == null){
-
-                    }else if(person[j].kodeTiket.equals(Kode) && Kereta.booleanStatusReguler[j] == true){
+                    if(person[j].kodeTiket.equals(Kode) && Kereta.booleanStatusReguler[j] == true){
                         Kereta.booleanStatusReguler[j] = false;
                         break;
                     }
                 }
             }
         }
+        JOptionPane.showMessageDialog(null, "Data berhasil dihapus dari sistem");
     }
     static void printTiket(){
         String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
-        int KTP =Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Nomor KTP : "));
+        String code = JOptionPane.showInputDialog(null, "Masukkan kode tiket : ");
         boolean stat = true;
         for(int i=0; i<ArrKereta.size() && stat == true; i++){
             kereta Kereta = ArrKereta.get(i);
             if(kelasKereta.equals("Eksekutif")){
                 dataDiri[] person = Kereta.personalDataEksekutif;
                 for(int j=0; j<Kereta.booleanStatusEksekutif.length; j++){
-                    if(person[j].ktp == KTP && Kereta.booleanStatusEksekutif[j] == true){
+                    if(person[j].kodeTiket.equals(code) && Kereta.booleanStatusEksekutif[j] == true){
                         JOptionPane.showMessageDialog(null, 
                         "Nomor tiket\t: " + person[j].kodeTiket +"\n" +
                         "Nama\t\t\t: " + person[j].nama + "\n" + 
@@ -281,7 +298,7 @@ public class Tiket_kereta{
             }else{
                 dataDiri[] person = Kereta.personalDataReguler;
                 for(int j=0; j<Kereta.booleanStatusReguler.length; j++){
-                    if(person[j].ktp == KTP && Kereta.booleanStatusReguler[j] == true){
+                    if(person[j].kodeTiket.equals(code) && Kereta.booleanStatusReguler[j] == true){
                         JOptionPane.showMessageDialog(null, 
                         "Nomor tiket\t: " + person[j].kodeTiket +"\n" +
                         "Nama\t\t\t: " + person[j].nama + "\n" + 
@@ -301,7 +318,6 @@ public class Tiket_kereta{
     JOptionPane.showMessageDialog(null, "Data tidak ditemukan!", "Alert", JOptionPane.WARNING_MESSAGE);
 }
     
-
 public static void allData(){
     OUTER:
     while (true) {
@@ -369,7 +385,5 @@ public static void allData(){
         kereta1.personalDataReguler[0] = datadiri1;
         //menu pada program
         allData();
-        
     }
 }
-
