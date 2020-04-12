@@ -117,7 +117,7 @@ public class Tiket_kereta{
         //Search jadwal kereta
         for(int i=0; i<ArrKereta.size() ; i++){
             kereta tempKereta = ArrKereta.get(i);
-            if(tempKereta.tujuanKota.equals(tujuan) && tempKereta.asalKota.equals(asal) &&
+            if(tempKereta.namaKereta.equals(namaKereta) && tempKereta.tujuanKota.equals(tujuan) && tempKereta.asalKota.equals(asal) &&
                tempKereta.dataWaktu.tanggal == tanggalKeberangkatan && tempKereta.dataWaktu.bulan.equals(bulanKeberangkatan) && 
                tempKereta.dataWaktu.tahun == tahunKeberangkatan && tempKereta.dataWaktu.jam == jamKeberangkatan){
                 //Harga tiket per kelas
