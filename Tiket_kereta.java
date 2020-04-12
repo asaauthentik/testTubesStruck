@@ -253,7 +253,7 @@ public class Tiket_kereta{
         for(int i=0; i<ArrKereta.size(); i++){
             dataDiri data = Arrperson.get(i);
             if(data.kodeTiket == code){
-                
+
             }
         }
     }
@@ -318,10 +318,6 @@ public static void allData(){
                 dataDiri newDataDD = inputDataPenumpang();
                 Arrperson.add(newDataDD);
                 registerPenumpang(Arrperson.get(Arrperson.size()-1));
-                /*String KTP = Integer.toString(newDataDD.ktp);
-                String codeBook = newDataDD.nama.substring(0,1) + newDataDD.JK.substring(0,1) + KTP.substring(0,2) + newDataDD.;
-                JOptionPane.showMessageDialog(null, "Kode Tiket: " + codeBook);
-                break;*/
             case 2:
                 editTiket();
                 break;
