@@ -245,6 +245,7 @@ public class Tiket_kereta{
     }
 
     static void batalTiket(){
+
         String code = JOptionPane.showInputDialog(null, "Masukkan kode booking : ");
         String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas : ");
 
@@ -286,7 +287,8 @@ public class Tiket_kereta{
             }
             Arrperson.remove(pos);
         }
-    
+        String codeBook = JOptionPane.showInputDialog(null, "Masukkan kode booking : ");
+
     }
     static void printTiket(){
         String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
@@ -294,35 +296,41 @@ public class Tiket_kereta{
         boolean stat = true;
         for(int i=0; i<ArrKereta.size() && stat == true; i++){
             kereta Kereta = ArrKereta.get(i);
-            dataDiri[] person;
-            boolean[] personStat;
-            int jml;
             if(kelasKereta.equals("Eksekutif")){
-                person = Kereta.personalDataEksekutif;
-                personStat = Kereta.booleanStatusEksekutif;
-                jml = Kereta.personalDataEksekutif.length;
+                dataDiri[] person = Kereta.personalDataEksekutif;
+                for(int j=0; j<Kereta.jumlahEksekutif; j++){
+                    if(person[j].ktp == KTP && Kereta.booleanStatusEksekutif[j] == true){
+                        JOptionPane.showMessageDialog(null, 
+                        "Nomor tiket\t: " + person[j].kodeTiket +"\n" +
+                        "Nama\t\t\t: " + person[j].nama + "\n" + 
+                        "Asal kota\t\t: " + Kereta.asalKota + "\n" +  
+                        "Kota Tujuan\t: " + Kereta.tujuanKota + "\n" + 
+                        "Tanggal\t\t: " + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
+                        "Pukul\t\t\t: " + Kereta.dataWaktu.jam + "\n" +
+                        "Nama Kereta\t: " + Kereta.namaKereta + "\n" +
+                        "Kelas Kereta\t: " + kelasKereta + "\n" +
+                        "Poin\t\t\t: " + person[j].poin
+                        );
+                    }
+                }     
             }else{
-                person = Kereta.personalDataReguler;
-                personStat = Kereta.booleanStatusReguler;
-                jml = Kereta.personalDataReguler.length;
-            }
-            for(int j=0; j<jml; j++){
-                if(person[j].ktp == KTP &&  personStat[j] == true){
-                    JOptionPane.showMessageDialog(null, 
-                    "Nomor tiket\t: " + person[j].kodeTiket +"\n" +
-                    "Nama\t\t\t: " + person[j].nama + "\n" + 
-                    "Asal kota\t\t: " + Kereta.asalKota + "\n" +  
-                    "Kota Tujuan\t: " + Kereta.tujuanKota + "\n" + 
-                    "Tanggal\t\t: " + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
-                    "Pukul\t\t\t: " + Kereta.dataWaktu.jam + "\n" +
-                    "Nama Kereta\t: " + Kereta.namaKereta + "\n" +
-                    "Kelas Kereta\t: " + kelasKereta + "\n" +
-                    "Poin\t\t\t: " + person[j].poin
-                    );
-                    stat = false;
+                dataDiri[] person = Kereta.personalDataReguler;
+                for(int j=0; j<Kereta.jumlahReguler; j++){
+                    if(person[j].ktp == KTP && Kereta.booleanStatusReguler[j] == true){
+                        JOptionPane.showMessageDialog(null, 
+                        "Nomor tiket\t: " + person[j].kodeTiket +"\n" +
+                        "Nama\t\t\t: " + person[j].nama + "\n" + 
+                        "Asal kota\t\t: " + Kereta.asalKota + "\n" +  
+                        "Kota Tujuan\t: " + Kereta.tujuanKota + "\n" + 
+                        "Tanggal\t\t: " + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
+                        "Pukul\t\t\t: " + Kereta.dataWaktu.jam + "\n" +
+                        "Nama Kereta\t: " + Kereta.namaKereta + "\n" +
+                        "Kelas Kereta\t: " + kelasKereta + "\n" +
+                        "Poin\t\t\t: " + person[j].poin
+                        );
+                    }
                 }
             }
-            
         }
     }
     //hello?
