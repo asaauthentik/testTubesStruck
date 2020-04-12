@@ -114,6 +114,26 @@ public class Tiket_kereta{
         String pilihanKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
         //String pembayaran = JOptionPane.showInputDialog(null, "Masukkan jenis pembayaran yang anda pakai : ");
         
+        for(int i=0; i<ArrKereta.size(); i++){
+            dataDiri person = Arrperson.get(i);
+            String KTP = Integer.toString(person.ktp);
+            String usia = Integer.toString(person.umur);
+            String tanggal = Integer.toString(tanggalKeberangkatan);
+            String jam = Integer.toString(jamKeberangkatan);
+            String codeBook = 
+                person.nama.substring(0,1) + 
+                person.JK.substring(0,1) + 
+                KTP.substring(0,2) + 
+                usia.substring(0) + 
+                namaKereta.substring(0,1) + 
+                asal.substring(0,1) + 
+                tujuan.substring(0,1) + 
+                tanggal.substring(0) + 
+                pilihanKereta.substring(0,1) + 
+                jam.substring(0);
+            JOptionPane.showMessageDialog(null, "Kode Tiket : " + codeBook);
+        }
+        
         //Search jadwal kereta
         for(int i=0; i<ArrKereta.size() ; i++){
             kereta tempKereta = ArrKereta.get(i);
@@ -227,8 +247,15 @@ public class Tiket_kereta{
             }
         }
     }
+
     static void batalTiket(){
-        String codeBook = JOptionPane.showMessageDialog(null, "Masukkan kode booking : ");
+        String code = JOptionPane.showInputDialog(null, "Masukkan kode booking: ");
+        for(int i=0; i<ArrKereta.size(); i++){
+            dataDiri data = Arrperson.get(i);
+            if(data.kodeTiket == code){
+                
+            }
+        }
     }
     static void printTiket(){
         String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
