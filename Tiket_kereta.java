@@ -152,10 +152,9 @@ public class Tiket_kereta{
                             }
                             JOptionPane.showMessageDialog(null, "Tiket kereta ditemukan dengan biaya :  " + biaya);
                             dataPenumpang.poin = dataPenumpang.poin + poin;
-                            tempKereta.booleanStatusEksekutif[j] = false;
+                            tempKereta.booleanStatusEksekutif[j] = true;
                             tempKereta.personalDataEksekutif[j] = dataPenumpang; 
                             dataPenumpang.kodeTiket = codeBook; 
-                            Arrperson.add(dataPenumpang);                                      
                             break; 
                         }
                     }
@@ -179,10 +178,9 @@ public class Tiket_kereta{
                             }
                             JOptionPane.showMessageDialog(null, "Tiket kereta ditemukan dengan biaya : " + biaya);
                             dataPenumpang.poin = dataPenumpang.poin + poin;
-                            tempKereta.booleanStatusReguler[j] = false;
+                            tempKereta.booleanStatusReguler[j] = true;
                             tempKereta.personalDataReguler[j] = dataPenumpang;  
                             dataPenumpang.kodeTiket = codeBook;
-                            Arrperson.add(dataPenumpang);                                      
                             break;
                         }
                     }
@@ -298,7 +296,7 @@ public class Tiket_kereta{
             kereta Kereta = ArrKereta.get(i);
             if(kelasKereta.equals("Eksekutif")){
                 dataDiri[] person = Kereta.personalDataEksekutif;
-                for(int j=0; j<Kereta.jumlahEksekutif; j++){
+                for(int j=0; j<Kereta.booleanStatusEksekutif.length; j++){
                     if(person[j].ktp == KTP && Kereta.booleanStatusEksekutif[j] == true){
                         JOptionPane.showMessageDialog(null, 
                         "Nomor tiket\t: " + person[j].kodeTiket +"\n" +
@@ -315,7 +313,7 @@ public class Tiket_kereta{
                 }     
             }else{
                 dataDiri[] person = Kereta.personalDataReguler;
-                for(int j=0; j<Kereta.jumlahReguler; j++){
+                for(int j=0; j<Kereta.booleanStatusReguler.length; j++){
                     if(person[j].ktp == KTP && Kereta.booleanStatusReguler[j] == true){
                         JOptionPane.showMessageDialog(null, 
                         "Nomor tiket\t: " + person[j].kodeTiket +"\n" +
@@ -333,7 +331,7 @@ public class Tiket_kereta{
             }
         }
     }
-    //hello?
+
 public static void allData(){
     OUTER:
     while (true) {
@@ -351,6 +349,7 @@ public static void allData(){
                 dataDiri newDataDD = inputDataPenumpang();
                 Arrperson.add(newDataDD);
                 registerPenumpang(Arrperson.get(Arrperson.size()-1));
+                break;
             case 2:
                 editTiket();
                 break;
