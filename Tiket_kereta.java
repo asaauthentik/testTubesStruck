@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.time.temporal.Temporal;
 import java.util.ArrayList;
 
 class kereta{
@@ -229,7 +228,7 @@ public class Tiket_kereta{
         }
     }
     /*
-    public static boolean pembatalanTiket(kereta dataPenumpang) {
+    public static boolean pembatalanTiket(kereta dataPenumpang){
         
     }
     */
@@ -274,10 +273,7 @@ public class Tiket_kereta{
                     }
                 }
             }
-        }   
-        /*
-          
-        */
+        }
     }
     
 public static void allData(){
@@ -336,6 +332,17 @@ public static void allData(){
         kereta1.personalDataReguler[0] = datadiri1;
         //menu pada program
         allData();
+        /*
+        String asal = "Bandung";
+        String tujuan = "Surabaya";
+        String krt = "Harina";
+        String kursi = "2";
+        String codeBook = "";
+        codeBook = asal.substring(0,2) + tujuan.substring(0,2) ;
+        JOptionPane.showMessageDialog(null, cb +);
+        */
     }
+    // kode 3hurufAsal +  3hurufTujuan + 3hurufkereta + tempatduduk
+    
 }
 
