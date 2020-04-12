@@ -178,12 +178,12 @@ public class Tiket_kereta{
     }
     
     public static void editTiket(){
-        String pilihan = JOptionPane.showInputDialog(null, "Apakah ingin mengedit data?(Yes/No): ");
+        String pilihan = JOptionPane.showInputDialog(null, "Apakah ingin mengedit data?(Yes/No) : ");
         if(pilihan.equals("Yes")){
             //Search data pemumpang
-            String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta: ");
-            String Name = JOptionPane.showInputDialog(null, "Masukkan Nama: ");
-            int KTP =Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Nomor KTP: "));
+            String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
+            String Name = JOptionPane.showInputDialog(null, "Masukkan Nama : ");
+            int KTP =Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Nomor KTP : "));
             boolean stat = true;
             for(int i=0; i<ArrKereta.size() && stat == true; i++){
                 kereta tempKereta = ArrKereta.get(i);
@@ -194,12 +194,12 @@ public class Tiket_kereta{
                             break;
                         }else if(person[j].nama.equals(Name) && person[j].ktp == KTP){
                             JOptionPane.showMessageDialog(null, "Data " + person[j].nama + " ditemukan");
-                            person[j].nama = JOptionPane.showInputDialog(null,"Nama: ");
-                            person[j].JK = JOptionPane.showInputDialog(null,"Jenis Kelamin: ");
-                            person[j].umur = Integer.parseInt(JOptionPane.showInputDialog(null, "Umur: "));
-                            person[j].ktp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP"));
-                            person[j].email = JOptionPane.showInputDialog(null,"Email: ");
-                            person[j].hp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP: "));
+                            person[j].nama = JOptionPane.showInputDialog(null,"Nama : ");
+                            person[j].JK = JOptionPane.showInputDialog(null,"Jenis Kelamin : ");
+                            person[j].umur = Integer.parseInt(JOptionPane.showInputDialog(null, "Umur : "));
+                            person[j].ktp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP : "));
+                            person[j].email = JOptionPane.showInputDialog(null,"Email : ");
+                            person[j].hp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP : "));
                             stat = false;
                         }
                         
@@ -211,12 +211,12 @@ public class Tiket_kereta{
                             break;
                         } else  if(person[j].nama.equals(Name) && person[j].ktp == KTP){
                             JOptionPane.showMessageDialog(null, "Data " + person[j].nama + " ditemukan");
-                            person[j].nama = JOptionPane.showInputDialog(null,"Nama: ");
-                            person[j].JK = JOptionPane.showInputDialog(null,"Jenis Kelamin: ");
-                            person[j].umur = Integer.parseInt(JOptionPane.showInputDialog(null, "Umur: "));
-                            person[j].ktp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP"));
-                            person[j].email = JOptionPane.showInputDialog(null,"Email: ");
-                            person[j].hp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP: "));
+                            person[j].nama = JOptionPane.showInputDialog(null,"Nama : ");
+                            person[j].JK = JOptionPane.showInputDialog(null,"Jenis Kelamin : ");
+                            person[j].umur = Integer.parseInt(JOptionPane.showInputDialog(null, "Umur : "));
+                            person[j].ktp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP : "));
+                            person[j].email = JOptionPane.showInputDialog(null,"Email : ");
+                            person[j].hp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP : "));
                             stat = false;                  
                         }
                     }
@@ -233,8 +233,8 @@ public class Tiket_kereta{
     }
     */
     static void printTiket(){
-        String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta: ");
-        int KTP =Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Nomor KTP: "));
+        String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
+        int KTP =Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan Nomor KTP : "));
         boolean stat = true;
         for(int i=0; i<ArrKereta.size() && stat == true; i++){
             kereta Kereta = ArrKereta.get(i);
@@ -243,15 +243,15 @@ public class Tiket_kereta{
                 for(int j=0; j<ArrKereta.size(); j++){
                     if(person[j].ktp == KTP){
                         JOptionPane.showMessageDialog(null, 
-                        "Nomor tiket    :" + person[j].kodeTiket +"\n" +
-                        "Nama           :" + person[j].nama + "\n" + 
-                        "Asal kota      :" + Kereta.asalKota + "\n" +  
-                        "Kota Tujuan    :" + Kereta.tujuanKota + "\n" + 
-                        "Tanggal        :" + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
-                        "Pukul          :" + Kereta.dataWaktu.jam + "\n" +
-                        "Nama Kereta    :" + Kereta.namaKereta + "\n" +
-                        "Kelas Kereta   :" + kelasKereta + "\n" +
-                        "Poin           :" + person[j].poin
+                        "Nomor tiket    : " + person[j].kodeTiket +"\n" +
+                        "Nama           : " + person[j].nama + "\n" + 
+                        "Asal kota      : " + Kereta.asalKota + "\n" +  
+                        "Kota Tujuan    : " + Kereta.tujuanKota + "\n" + 
+                        "Tanggal        : " + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
+                        "Pukul          : " + Kereta.dataWaktu.jam + "\n" +
+                        "Nama Kereta    : " + Kereta.namaKereta + "\n" +
+                        "Kelas Kereta   : " + kelasKereta + "\n" +
+                        "Poin           : " + person[j].poin
                         );
                     }
                 }     
@@ -260,15 +260,15 @@ public class Tiket_kereta{
                 for(int j=0; j<ArrKereta.size(); j++){
                     if(person[j].ktp == KTP){
                         JOptionPane.showMessageDialog(null, 
-                        "Nomor tiket    :" + person[j].kodeTiket +"\n" +
-                        "Nama           :" + person[j].nama + "\n" + 
-                        "Asal kota      :" + Kereta.asalKota + "\n" +  
-                        "Kota Tujuan    :" + Kereta.tujuanKota + "\n" + 
-                        "Tanggal        :" + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
-                        "Pukul          :" + Kereta.dataWaktu.jam + "\n" +
-                        "Nama Kereta    :" + Kereta.namaKereta + "\n" +
-                        "Kelas Kereta   :" + kelasKereta + "\n" +
-                        "Poin           :" + person[j].poin
+                        "Nomor tiket    : " + person[j].kodeTiket +"\n" +
+                        "Nama           : " + person[j].nama + "\n" + 
+                        "Asal kota      : " + Kereta.asalKota + "\n" +  
+                        "Kota Tujuan    : " + Kereta.tujuanKota + "\n" + 
+                        "Tanggal        : " + Kereta.dataWaktu.tanggal + " " + Kereta.dataWaktu.bulan + " " + Kereta.dataWaktu.tahun + " " + "\n" +
+                        "Pukul          : " + Kereta.dataWaktu.jam + "\n" +
+                        "Nama Kereta    : " + Kereta.namaKereta + "\n" +
+                        "Kelas Kereta   : " + kelasKereta + "\n" +
+                        "Poin           : " + person[j].poin
                         );
                     }
                 }
@@ -285,7 +285,7 @@ public static void allData(){
                 "1. Pesan Tiket Kereta\n" + 
                 "2. Edit Data Pemesanan Tiket Kereta\n" + 
                 "3. Batalkan Pemesanan Tiket Kereta\n" + 
-                "4, Print Tiket Kereta\n"
+                "4. Print Tiket Kereta\n"
             )
         );
         switch (Menu) {
