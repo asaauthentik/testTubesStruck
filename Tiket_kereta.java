@@ -90,7 +90,7 @@ class viaBayar{
 public class Tiket_kereta{
     static ArrayList<kereta> ArrKereta =  new ArrayList<kereta>();
     static ArrayList<dataDiri> Arrperson = new ArrayList<dataDiri>();
-
+//bukan, bata
     public static dataDiri inputDataPenumpang(){
         dataDiri data = new dataDiri();
         data.nama = JOptionPane.showInputDialog(null, "Masukkan Nama : ");
