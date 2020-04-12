@@ -228,7 +228,7 @@ public class Tiket_kereta{
         }
     }
     static void batalTiket(){
-        String codeBook = JOptionPane.showMessageDialog(null, "Masukkan kode booking : ");
+        String codeBook = JOptionPane.showInputDialog(null, "Masukkan kode booking : ");
     }
     static void printTiket(){
         String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
