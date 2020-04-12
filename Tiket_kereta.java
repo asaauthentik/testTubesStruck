@@ -113,7 +113,7 @@ public class Tiket_kereta{
         int jamKeberangkatan = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan jam keberangkatan: "));
         String pilihanKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta: ");
         // String pembayaran = JOptionPane.showInputDialog(null, "Masukkan jenis pembayaran yang anda pakai: ");
-       
+        
         //Search jadwal kereta
         for(int i=0; i<ArrKereta.size() ; i++){
             kereta tempKereta = ArrKereta.get(i);
@@ -293,6 +293,11 @@ public static void allData(){
                 dataDiri newDataDD = inputDataPenumpang();
                 Arrperson.add(newDataDD);
                 registerPenumpang(Arrperson.get(Arrperson.size()-1));
+                /*
+                String KTP = Integer.toString(newDataDD.ktp);
+                String codeBook = newDataDD.nama.substring(0,1) + newDataDD.JK.substring(0,1) + KTP.substring(0,2) + newDataDD.;
+                JOptionPane.showMessageDialog(null, "Kode Tiket: " + codeBook);
+                */
                 break;
             case 2:
                 editTiket();
@@ -332,17 +337,9 @@ public static void allData(){
         kereta1.personalDataReguler[0] = datadiri1;
         //menu pada program
         allData();
-        /*
-        String asal = "Bandung";
-        String tujuan = "Surabaya";
-        String krt = "Harina";
-        String kursi = "2";
-        String codeBook = "";
-        codeBook = asal.substring(0,2) + tujuan.substring(0,2) ;
-        JOptionPane.showMessageDialog(null, cb +);
-        */
+        
     }
-    // kode 3hurufAsal +  3hurufTujuan + 3hurufkereta + tempatduduk
+    
     
 }
 
