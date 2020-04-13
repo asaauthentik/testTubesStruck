@@ -223,7 +223,7 @@ public class Tiket_kereta{
                             person[j].ktp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.KTP : "));
                             person[j].email = JOptionPane.showInputDialog(null,"Email : ");
                             person[j].hp = Integer.parseInt(JOptionPane.showInputDialog(null, "No.HP : "));
-                            stat = false;
+                            stat = false;//false = sudah ditemukan dan di edit
                         }
                         
                     }
@@ -277,6 +277,7 @@ public class Tiket_kereta{
         }
         JOptionPane.showMessageDialog(null, "Data berhasil dihapus dari sistem");
     }
+    
     static void printTiket(){
         String kelasKereta = JOptionPane.showInputDialog(null, "Masukkan kelas kereta : ");
         String code = JOptionPane.showInputDialog(null, "Masukkan kode tiket : ");
