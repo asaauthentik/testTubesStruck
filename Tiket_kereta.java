@@ -44,7 +44,7 @@ class dataDiri{
     String pembayaran;
     int poin;
     String kodeTiket;
-    viaBayar payment;
+    viaBayar payment = new viaBayar();
     dataDiri(){}
     dataDiri(String nama, String JK, int umur, int ktp, String email,int hp, String pembayaran, int poin, String kodeTiket){
         this.nama = nama;
@@ -76,6 +76,7 @@ class viaBayar{
     int mobilebanking;//nomor va
     int minimarket;// alfa indomart
     int visa;//nomor kartu kredit
+    viaBayar(){}
     public viaBayar(int atm, int mobilebanking, int minimarket, int visa){
         this.atm = atm;
         this.mobilebanking = mobilebanking;
@@ -160,7 +161,7 @@ public class Tiket_kereta{
                             }
                         }
                         //--- via bayar
-                        //via_bayar(dataPenumpang);
+                        via_bayar(dataPenumpang);
                         dataPenumpang.poin += poin;
                         dataPenumpang.kodeTiket = codeBook;
                         personalData[j] = dataPenumpang; 
@@ -185,14 +186,18 @@ public class Tiket_kereta{
             );
         if(pilih == 1){
             dataPenumpang.payment.atm = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukan nomor kartu atm: "));
+            JOptionPane.showMessageDialog(null, "Via pembayaran  berhasil!");
         }else if(pilih == 2){
             dataPenumpang.payment.minimarket = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu keanggotaan minimarket: "));
+            JOptionPane.showMessageDialog(null, "Via pembayaran minimarket berhasil!");
         }else if(pilih == 3){
             dataPenumpang.payment.mobilebanking = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor virtual account: "));
+            JOptionPane.showMessageDialog(null, "Via pembayaran mobile banking berhasil!");
         }else if(pilih == 4){
             dataPenumpang.payment.visa = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu kredit: "));
+            JOptionPane.showMessageDialog(null, "Via pembayaran kartu kredit berhasil!");
         }
-        JOptionPane.showMessageDialog(null, "Via pembayaran " + dataPenumpang.payment + " berhasil!");
+        //
     }
 
     public static void editTiket(){
