@@ -72,10 +72,10 @@ class waktu{
 }
 
 class viaBayar{
-    int atm;//nanti rekening
-    int mobilebanking;//nomor va
-    int minimarket;// alfa indomart
-    int visa;//nomor kartu kredit
+    int atm;
+    int mobilebanking;
+    int minimarket;
+    int visa;
     viaBayar(){}
     public viaBayar(int atm, int mobilebanking, int minimarket, int visa){
         this.atm = atm;
@@ -185,16 +185,16 @@ public class Tiket_kereta{
                 "4. Visa\n")
             );
         if(pilih == 1){
-            dataPenumpang.payment.atm = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukan nomor kartu atm: "));
+            dataPenumpang.payment.atm = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukan nomor kartu atm : "));
             JOptionPane.showMessageDialog(null, "Via pembayaran  berhasil!");
         }else if(pilih == 2){
-            dataPenumpang.payment.minimarket = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu keanggotaan minimarket: "));
+            dataPenumpang.payment.minimarket = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu keanggotaan minimarket : "));
             JOptionPane.showMessageDialog(null, "Via pembayaran minimarket berhasil!");
         }else if(pilih == 3){
-            dataPenumpang.payment.mobilebanking = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor virtual account: "));
+            dataPenumpang.payment.mobilebanking = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor virtual account : "));
             JOptionPane.showMessageDialog(null, "Via pembayaran mobile banking berhasil!");
         }else if(pilih == 4){
-            dataPenumpang.payment.visa = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu kredit: "));
+            dataPenumpang.payment.visa = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu kredit : "));
             JOptionPane.showMessageDialog(null, "Via pembayaran kartu kredit berhasil!");
         }
         //
