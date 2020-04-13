@@ -197,7 +197,6 @@ public class Tiket_kereta{
             dataPenumpang.payment.visa = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu kredit : "));
             JOptionPane.showMessageDialog(null, "Via pembayaran kartu kredit berhasil!");
         }
-        //
     }
 
     public static void editTiket(){
