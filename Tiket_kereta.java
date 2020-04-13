@@ -186,7 +186,7 @@ public class Tiket_kereta{
             );
         if(pilih == 1){
             dataPenumpang.payment.atm = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukan nomor kartu atm : "));
-            JOptionPane.showMessageDialog(null, "Via pembayaran  berhasil!");
+            JOptionPane.showMessageDialog(null, "Via pembayaran atm berhasil!");
         }else if(pilih == 2){
             dataPenumpang.payment.minimarket = Integer.parseInt(JOptionPane.showInputDialog(null, "Masukkan nomor kartu keanggotaan minimarket : "));
             JOptionPane.showMessageDialog(null, "Via pembayaran minimarket berhasil!");
